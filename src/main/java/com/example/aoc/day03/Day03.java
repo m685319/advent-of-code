@@ -26,7 +26,29 @@ public class Day03 {
 	}
 
 	private static String partOne(List<String> lines) {
-		return String.valueOf(lines.size());
+		int totalSum = 0;
+		for (String line: lines) {
+			int firstMax = 0;
+			int secondMax = 0;
+			int firstMaxIndex = 0;
+			for (int i = 0; i < line.length() - 1; i++) {
+				int current = line.charAt(i) - '0';
+				if(current > firstMax) {
+					firstMax = current;
+					firstMaxIndex = i;
+				}
+			}
+
+			for (int i = firstMaxIndex + 1; i < line.length() ; i++) {
+				int current = line.charAt(i) - '0';
+				if(current > secondMax) {
+					secondMax = current;
+				}
+			}
+			int sum = firstMax*10 + secondMax;
+			totalSum += sum;
+		}
+		return String.valueOf(totalSum);
 	}
 
 	private static String partTwo(List<String> lines) {
