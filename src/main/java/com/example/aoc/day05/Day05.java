@@ -1,6 +1,7 @@
 package com.example.aoc.day05;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.aoc.util.Utility;
@@ -26,7 +27,25 @@ public class Day05 {
 	}
 
 	private static String partOne(List<String> lines) {
-		return String.valueOf(lines.size());
+		int i = lines.indexOf("");
+		List<String> rangeList = lines.subList(0,i);
+		List<Long> freshIDList = lines.subList(i+1, lines.size()).stream()
+																	.map(Long::valueOf)
+																	.toList();
+		int count = 0;
+		for(Long id : freshIDList) {
+			for(String range : rangeList) {
+				long lowerLimit = Long.parseLong(range.split("-")[0]);
+				long upperLimit = Long.parseLong(range.split("-")[1]);
+				if(id >= lowerLimit && id <= upperLimit) {
+					count++;
+					break;
+				}
+			}
+		}
+
+
+		return String.valueOf(count);
 	}
 
 	private static String partTwo(List<String> lines) {
