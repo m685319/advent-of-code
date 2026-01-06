@@ -61,7 +61,6 @@ public class Day04 {
 		if (j - 1 >= 0) {
 			count += grid[i][j - 1] == '@' ? 1 : 0;
 		}
-
 		if (i - 1 >= 0) {
 			count += grid[i - 1][j] == '@' ? 1 : 0;
 			if (j + 1 < cols) {
@@ -71,7 +70,6 @@ public class Day04 {
 				count += grid[i - 1][j - 1] == '@' ? 1 : 0;
 			}
 		}
-
 		if (i + 1 < rows) {
 			count += grid[i + 1][j] == '@' ? 1 : 0;
 			if (j + 1 < cols) {
@@ -81,7 +79,6 @@ public class Day04 {
 				count += grid[i + 1][j - 1] == '@' ? 1 : 0;
 			}
 		}
-
 		if (count < 4) {
 			return true;
 		}

@@ -31,7 +31,6 @@ public class Day02 {
         for (String string : split) {
             long startingElement = Long.parseLong(string.split("-")[0]);
             long endingElement = Long.parseLong(string.split("-")[1]);
-
             for (long j = startingElement; j <= endingElement; j++) {
                 String s = String.valueOf(j);
                 int middleIndex1 = s.length() / 2;
