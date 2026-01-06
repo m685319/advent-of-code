@@ -26,7 +26,35 @@ public class Day06 {
 	}
 
 	private static String partOne(List<String> lines) {
-		return String.valueOf(lines.size());
+		int rows = lines.size();
+		int cols = lines.get(0).trim().split("\\s+").length;
+
+		String[][] grid = new String[rows][cols];
+
+		for (String line : lines) {
+			grid[lines.indexOf(line)] = line.trim().split("\\s+");
+		}
+
+			long totalSum = 0;
+			for (int j = 0; j < cols; j++) {
+				String current = grid[rows-1][j];
+
+				if(current.equals("*")) {
+					long product = 1;
+					for (int i = 0; i < rows - 1; i++) {
+						product *= Integer.parseInt(grid[i][j]) ;
+					}
+					totalSum += product;
+				} else {
+					long sum = 0;
+					for (int i = 0; i < rows - 1; i++) {
+						sum += Integer.parseInt(grid[i][j]) ;
+					}
+					totalSum += sum;
+				}
+			}
+
+		return String.valueOf(totalSum);
 	}
 
 	private static String partTwo(List<String> lines) {
