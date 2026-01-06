@@ -38,7 +38,6 @@ public class Day03 {
 					firstMaxIndex = i;
 				}
 			}
-
 			for (int i = firstMaxIndex + 1; i < line.length() ; i++) {
 				int current = line.charAt(i) - '0';
 				if(current > secondMax) {
