@@ -1,13 +1,13 @@
 # 🎄 Advent of Code 2025 — Java Solutions
 
-Solutions for Advent of Code 2025, implemented in Java 21 using Maven.
+Solutions for Advent of Code 2025 ( https://adventofcode.com/ ), implemented in Java 21 using Maven.
 Each day’s puzzle is organized as a separate Java package, with a simple main-based runner and shared utilities.
 
 ---
 
 ## 📌 Summary
 
-This repository contains my daily solutions for Advent of Code 2025.
+This repository contains solutions for Advent of Code 2025.
 The focus is on:
 * Clean and readable Java
 * Minimal frameworks
