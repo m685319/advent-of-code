@@ -1,6 +1,7 @@
 package com.example.aoc.day02;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.aoc.util.Utility;
@@ -27,7 +28,7 @@ public class Day02 {
 
 	private static String partOne(List<String> lines) {
 		long sum = 0;
-		String[] split = lines.get(0).split(",");
+		String[] split = lines.getFirst().split(",");
         for (String string : split) {
             long startingElement = Long.parseLong(string.split("-")[0]);
             long endingElement = Long.parseLong(string.split("-")[1]);
@@ -45,7 +46,48 @@ public class Day02 {
 	}
 
 	private static String partTwo(List<String> lines) {
-		return String.valueOf(lines.size());
+		long sum = 0;
+		String[] split = lines.getFirst().split(",");
+		for (String string : split) {
+			long startingElement = Long.parseLong(string.split("-")[0]);
+			long endingElement = Long.parseLong(string.split("-")[1]);
+			for (long j = startingElement; j <= endingElement; j++) {
+				String s = String.valueOf(j);
+				sum = getSum(s, sum);
+			}
+		}
+		return String.valueOf(sum);
 	}
 
+	private static long getSum(String s, long sum) {
+		int half = s.length()/2;
+		for (int i = 1; i <= half; i++) {
+			List<String> parts = splitByLength(s, i);
+			boolean same = isSame(parts);
+			if(same) {
+				sum += Long.parseLong(s);
+				return sum;
+			}
+		}
+		return sum;
+	}
+
+	private static List<String> splitByLength(String s, int length) {
+		List<String> parts = new ArrayList<>();
+		for (int j = 0; j < s.length(); j += length) {
+			int end = Math.min(j+length, s.length());
+			parts.add(s.substring(j, end));
+		}
+		return parts;
+	}
+
+	private static boolean isSame(List<String> parts) {
+		String first = parts.getFirst();
+		for (String part : parts) {
+			if(!part.equals(first)) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
